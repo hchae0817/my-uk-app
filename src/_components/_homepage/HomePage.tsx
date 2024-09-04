@@ -1,7 +1,7 @@
 import { Box, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Header } from "./Header";
-import { Body } from "./Body";
+import { Body } from "./_body/Body";
 import { Footer } from "./Footer";
 
 
