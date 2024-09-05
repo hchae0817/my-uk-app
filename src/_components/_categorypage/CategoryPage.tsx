@@ -1,10 +1,11 @@
 // src/pages/CategoryPage.tsx
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Typography} from '@mui/material';
+import { Box, CardMedia, Typography } from '@mui/material';
 import { posts } from '../data/posts';
 import BackButton from '../BackButton';
 import DisplayPosts from '../_homepage/_body/DisplayPosts';
+import { categories } from '../data/categories';
 
 const CategoryPage: React.FC = () => {
   const { category } = useParams<{ category: string }>();
@@ -15,10 +16,35 @@ const CategoryPage: React.FC = () => {
 
   const filteredPosts = posts.filter(post => post.category === category);
 
+  const categoryData = categories.find(cat => cat.name === category);
+  const imageUrl = categoryData ? categoryData.imageUrl : '';
+  const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+
   return (
     <Box sx={{ padding: 2 }}>
-      <BackButton />
-      <Typography variant="h2">{category} Posts</Typography>
+
+      <Typography variant="h2" gutterBottom>
+        {capitalizedCategory} Posts
+      </Typography>
+      <Typography variant="body1" align="center" sx={{ marginY: 4 }}>
+        Discover a curated selection of posts related to {capitalizedCategory}. 
+        Explore the latest and most popular content.
+      </Typography>
+
+      {imageUrl && (
+        <CardMedia
+          component="img"
+          image={imageUrl}
+          alt={category}
+          sx={{
+            width: '100%',
+            height: '300px', // Increased height for a more prominent banner
+            objectFit: 'cover',
+            marginBottom: 2
+          }}
+        />
+      )}
+
       <DisplayPosts filteredPosts={filteredPosts} />
 
     </Box>

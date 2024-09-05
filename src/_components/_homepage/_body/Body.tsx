@@ -33,8 +33,9 @@ const Body = () => {
 
   return (
     <Box sx={BodyStyles.ContainerBox}>
-       <Box sx={{ fontWeight: "bold", width: "50%"}}>
-        <Typography variant="h2" sx={{ fontWeight: "bold"}}>
+       
+       <Box sx={{ fontWeight: "bold"}}>
+        <Typography variant="h2" sx={{ fontWeight: "bold",  width: "50%"}}>
           Booking Service
         </Typography>
         <Box sx={{ width: "50%"}}>
@@ -46,27 +47,11 @@ const Body = () => {
           restaurants, and more.
         </Typography>
         </Box>
-       
-      </Box>
-      <Box >
-        <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>
-          쉽고 편하게 여행하는
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 2 }}>
-          Welcome to TodoUK, your guide to exploring the UK. Enjoy easy and comfortable trips with
-          our recommendations.
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Discover the best places to visit in the UK with us, covering music, landmarks,
-          restaurants, and more.
-        </Typography>
       </Box>
 
       <Box sx={{ width: "100%" }}>
-        <Typography variant="h2">Blog Categories</Typography>
         <CategoryPosts />
       </Box>
-
         <Button
           variant="contained"
           color="primary"

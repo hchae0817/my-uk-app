@@ -10,4 +10,5 @@ export interface Post {
   export interface Category {
     name: string;
     displayName: string;
+    imageUrl: string;
   }
