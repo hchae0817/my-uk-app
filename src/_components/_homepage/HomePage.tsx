@@ -1,8 +1,6 @@
 import { Box, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Header } from "./Header";
-import { Body } from "./_body/Body";
-import { Footer } from "./Footer";
+import Body  from "./_body/Body";
 
 
 interface IHomePageProps {
@@ -13,9 +11,7 @@ export const HomePage: React.FC<IHomePageProps> = (props): JSX.Element | null =>
   
   return (
     <Box >
-       <Header/>
        <Body/>
-       <Footer/>
     </Box>
   );
 };
