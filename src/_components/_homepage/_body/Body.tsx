@@ -33,6 +33,21 @@ const Body = () => {
 
   return (
     <Box sx={BodyStyles.ContainerBox}>
+       <Box sx={{ fontWeight: "bold", width: "50%"}}>
+        <Typography variant="h2" sx={{ fontWeight: "bold"}}>
+          Booking Service
+        </Typography>
+        <Box sx={{ width: "50%"}}>
+        <Typography variant="body1" sx={{ mb: 2 }}>
+         더 편하게, 더 다양하게, 더 재미있게
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Discover the best places to visit in the UK with us, covering music, landmarks,
+          restaurants, and more.
+        </Typography>
+        </Box>
+       
+      </Box>
       <Box >
         <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>
           쉽고 편하게 여행하는
