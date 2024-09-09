@@ -1,28 +1,7 @@
-// import { Box } from "@mui/material";
-// import React, { useEffect, useState } from "react";
-// import { BodyStyles } from "../BodyStyles";
-// import { CategoryPosts } from "./CategoryPosts";
-// import { SearchPosts } from "./SearchPosts";
-
-// interface IBodyProps {
-//   test?: any;
-// }
-
-// export const Body: React.FC<IBodyProps> = (props): JSX.Element | null => {
-//   return (
-//     <Box sx={BodyStyles.ContainerBox}>
-//       <CategoryPosts />
-//       <SearchPosts />
-//       <Box sx={BodyStyles.MessageBox}>쉽고 편하게 여행하는</Box>
-//     </Box>
-//   );
-// };
-
-import { Box, Typography, Card, CardContent, CardMedia, Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { BodyStyles } from "../BodyStyles";
 import { CategoryPosts } from "./CategoryPosts";
-import { SearchPosts } from "./SearchPosts";
 
 const Body = () => {
   const navigate = useNavigate();
