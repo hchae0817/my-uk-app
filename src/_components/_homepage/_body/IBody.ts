@@ -4,8 +4,13 @@ export interface Post {
     category: string;
     content: string;
     tags: string[];
+    contentType: ContentType;
   }
   
+  export enum ContentType {
+    html,
+    template
+  }
   
   export interface Category {
     name: string;

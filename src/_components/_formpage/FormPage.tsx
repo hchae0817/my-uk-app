@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, TextField, Button, Typography, Box } from '@mui/material';
 import BackButton from '../BackButton';
+import CategoryComponent from './CategoryForm';
 
 const FormPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -22,10 +23,11 @@ const FormPage: React.FC = () => {
 
   return (
     <Container>
-      <BackButton/>
+      {/* <BackButton/> */}
       <Typography variant="h4" gutterBottom>
         Fill in the Form
       </Typography>
+      <CategoryComponent />
       <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
         <TextField
           label="Name"
