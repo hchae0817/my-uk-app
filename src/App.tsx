@@ -9,12 +9,21 @@ import Footer from "./_components/_homepage/Footer";
 import { Box } from "@mui/material";
 import { SearchPosts } from "./_components/_homepage/_body/SearchPosts";
 import PostDetail from "./_components/_homepage/_body/PostDetail";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column', // Arrange children in a column
+        minHeight: '100vh', // Full height of the viewport
+      }}
+    >
     <Router>
+      <ScrollToTop />
       <Header />
-      <Box sx={{ padding: 2 }}>
+      <Box component="main" sx={{ padding: 2, scrollBehavior: 'smooth' }}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/form" element={<FormPage />} />
@@ -25,6 +34,7 @@ function App() {
       </Box>
       <Footer />
     </Router>
+    </Box>
   );
 }
 

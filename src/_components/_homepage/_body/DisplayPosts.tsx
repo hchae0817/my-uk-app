@@ -26,7 +26,7 @@ const DisplayPosts: React.FC<IDisplayPostsProps> = (props) => {
           >
             <CardContent>
               <Typography variant="h5">{post.title}</Typography>
-              <Typography>{post.content}</Typography>
+              <Typography>{post.summary}</Typography>
               {post.tags.map((tag) => (
                 <Chip key={tag} label={tag} sx={{ margin: 0.5 }} />
               ))}

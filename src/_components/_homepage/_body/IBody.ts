@@ -3,8 +3,11 @@ export interface Post {
     title: string;
     category: string;
     content: string;
+    summary: string;
     tags: string[];
     contentType: ContentType;
+    location: string,
+    rating: number,
   }
   
   export enum ContentType {

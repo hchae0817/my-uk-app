@@ -15,6 +15,8 @@ const Footer: React.FC = () => {
         py: 4,
         px: { xs: 2, sm: 4 },
         textAlign: 'center',
+        mt: "auto",
+        flexShrink: 0
       }}
     >
       <Grid container spacing={4} justifyContent="center">
@@ -92,7 +94,7 @@ const Footer: React.FC = () => {
             Contact Us
           </Typography>
           <Typography variant="body2">
-            Email: contact@todouk.com
+            Email: hchae0817@gmail.com
           </Typography>
           <Typography variant="body2">
             Phone: +44 1234 567 890

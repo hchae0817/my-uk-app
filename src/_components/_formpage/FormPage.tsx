@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, TextField, Button, Typography, Box } from '@mui/material';
 import BackButton from '../BackButton';
-import CategoryComponent from './CategoryForm';
+import CategoryForm from './CategoryForm';
 
 const FormPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +27,7 @@ const FormPage: React.FC = () => {
       <Typography variant="h4" gutterBottom>
         Fill in the Form
       </Typography>
-      <CategoryComponent />
+      <CategoryForm />
       <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
         <TextField
           label="Name"
@@ -45,9 +45,17 @@ const FormPage: React.FC = () => {
           fullWidth
           margin="normal"
         />
-        <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
-          Submit
-        </Button>
+        <Box
+          sx={{
+            display: 'flex', 
+            justifyContent: 'flex-end',
+            marginTop: 2,
+          }}
+        >
+          <Button variant="contained" color="primary" type="submit">
+            Submit
+          </Button>
+        </Box>
       </Box>
     </Container>
   );
