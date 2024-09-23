@@ -19,7 +19,7 @@ const Body = () => {
         </Typography>
         <Box sx={{ width: "50%"}}>
         <Typography variant="body1" sx={{ mb: 2 }}>
-         더 편하게, 더 다양하게, 더 재미있게
+         Life is too short to plan all my travel
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Discover the best places to visit in the UK with us, covering music, landmarks,
