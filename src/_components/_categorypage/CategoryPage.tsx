@@ -3,7 +3,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, CardMedia, Typography } from '@mui/material';
 import { posts } from '../data/posts';
-import BackButton from '../BackButton';
 import DisplayPosts from '../_homepage/_body/DisplayPosts';
 import { categories } from '../data/categories';
 
@@ -38,7 +37,7 @@ const CategoryPage: React.FC = () => {
           alt={category}
           sx={{
             width: '100%',
-            height: '300px', // Increased height for a more prominent banner
+            height: '300px', 
             objectFit: 'cover',
             marginBottom: 2
           }}
