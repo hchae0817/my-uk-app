@@ -71,6 +71,7 @@ const CategoryForm: React.FC = () => {
       </Select>
 
       {/* Dynamic Content */}
+     {/* TODO: Make sure you set some limit for the text  */}
       {selectedCategory && (
         <Box sx={{ textAlign: 'center' }}>
           <Typography variant="h4" sx={{ marginBottom: '10px' }}>
