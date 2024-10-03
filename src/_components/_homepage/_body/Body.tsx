@@ -2,6 +2,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { BodyStyles } from "../BodyStyles";
 import { CategoryPosts } from "./CategoryPosts";
+import HeroSection from "./HeroSection";
 
 const Body = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Body = () => {
 
   return (
     <Box sx={BodyStyles.ContainerBox}>
-       
+       <HeroSection/>
        <Box sx={{ fontWeight: "bold"}}>
         <Typography variant="h2" sx={{ fontWeight: "bold",  width: "50%"}}>
           Booking Service
