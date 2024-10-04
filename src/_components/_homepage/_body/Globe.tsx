@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-const HeroSection: React.FC = () => {
+const Globe: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -19,8 +19,9 @@ const HeroSection: React.FC = () => {
     containerRef.current.appendChild(renderer.domElement);
 
     // Globe geometry and material
-    const geometry = new THREE.SphereGeometry(5, 32, 32);
-    const texture = new THREE.TextureLoader().load('https://eoimages.gsfc.nasa.gov/images/imagerecords/153000/153166/northwestpassage_pace_20240713_th.jpg');
+    const geometry = new THREE.SphereGeometry(5, 64, 64);
+    const url = 'https://eyes.nasa.gov/assets/dynamic/earth/data/viirsToday/viirsToday_thumbnail.webp'
+    const texture = new THREE.TextureLoader().load(url); // Your globe texture
     const material = new THREE.MeshBasicMaterial({ map: texture });
     const globe = new THREE.Mesh(geometry, material);
     scene.add(globe);
@@ -33,21 +34,33 @@ const HeroSection: React.FC = () => {
     const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
     scene.add(ambientLight);
 
-    camera.position.z = 10;
+    camera.position.z = 15;
+
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
 
     // Mouse movement
     const onMouseMove = (event: MouseEvent) => {
-      const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-      const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      const rotationSpeed = 0.5;
 
-      globe.rotation.y = mouseX * Math.PI; // Adjust rotation based on mouse X
-      globe.rotation.x = mouseY * Math.PI; // Adjust rotation based on mouse Y
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObject(globe);
+      if (intersects.length > 0) {
+        globe.rotation.y = mouse.x * rotationSpeed; // Adjust rotation based on mouse X
+        globe.rotation.x = mouse.y * rotationSpeed; // Adjust rotation based on mouse Y
+      }
+
     };
 
     window.addEventListener('mousemove', onMouseMove);
 
     // Animation loop
     const animate = () => {
+      const defaultRotationSpeed = 0.05;
+      globe.rotation.y += defaultRotationSpeed * 0.01;
+
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
     };
@@ -63,4 +76,4 @@ const HeroSection: React.FC = () => {
   return <div ref={containerRef} style={{ width: '100%', height: '100vh' }} />;
 };
 
-export default HeroSection;
+export default Globe;
