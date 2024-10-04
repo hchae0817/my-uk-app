@@ -1,4 +1,5 @@
 // Globe.tsx
+import { Box } from '@mui/system';
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -10,7 +11,6 @@ const Globe: React.FC = () => {
 
     const width = containerRef.current.clientWidth;
     const height = containerRef.current.clientHeight;
-
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
@@ -34,7 +34,7 @@ const Globe: React.FC = () => {
     const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
     scene.add(ambientLight);
 
-    camera.position.z = 15;
+    camera.position.z = 20;
 
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
@@ -48,8 +48,8 @@ const Globe: React.FC = () => {
       raycaster.setFromCamera(mouse, camera);
       const intersects = raycaster.intersectObject(globe);
       if (intersects.length > 0) {
-        globe.rotation.y = mouse.x * rotationSpeed; // Adjust rotation based on mouse X
-        globe.rotation.x = mouse.y * rotationSpeed; // Adjust rotation based on mouse Y
+        globe.rotation.y = mouse.x * rotationSpeed; 
+        globe.rotation.x = mouse.y * rotationSpeed; 
       }
 
     };
@@ -73,7 +73,7 @@ const Globe: React.FC = () => {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ width: '100%', height: '100vh' }} />;
+  return <Box ref={containerRef} style={{ width: '100%', height: '100vh' }} />;
 };
 
 export default Globe;
