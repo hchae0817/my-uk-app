@@ -32,9 +32,9 @@ export const SearchPosts: React.FC = (props): JSX.Element | null => {
   return (
     <Box>
       <Box>
-        <Box sx={{ marginTop: 4 }}>
+        <Box sx={{ marginTop: 4, marginBottom: 1 }}>
           <Typography variant="h3">Filter Posts by Tags</Typography>
-          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, marginBottom: 2 }}>
+          <Box sx={{ display: "flex", flexWrap: "wrap"}}>
             {allTags.map((tag) => (
               <Chip
                 key={tag}
