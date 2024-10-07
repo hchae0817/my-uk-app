@@ -21,7 +21,7 @@ const Globe: React.FC = () => {
 
     // Globe geometry and material
     const geometry = new THREE.SphereGeometry(5, 64, 64);
-    const url = 'https://eyes.nasa.gov/assets/dynamic/earth/data/viirsToday/viirsToday_thumbnail.webp'
+    const url = `${process.env.PUBLIC_URL}/images/globe.webp`;
     const texture = new THREE.TextureLoader().load(url); // Your globe texture
     const material = new THREE.MeshBasicMaterial({ map: texture });
     const globe = new THREE.Mesh(geometry, material);

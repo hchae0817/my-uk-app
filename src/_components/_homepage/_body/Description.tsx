@@ -15,7 +15,6 @@ const DescriptionComponent = () => {
         boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', // Soft shadow for depth
         p: 4, // Padding
         mx: { xs: 2, md: 4 }, // Horizontal margins for responsiveness
-        mt: -10, // Negative margin to overlap the globe
         zIndex: 1, // Ensure it's above other elements
         width: { xs: '90%', md: '70%' }, // Responsive width
       }}
