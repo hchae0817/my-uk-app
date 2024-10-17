@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Container, TextField, Button, Typography, Box, Select, MenuItem, SelectChangeEvent } from "@mui/material";
 import { categories } from "../data/categories";
 import { FormData } from "./FormData";
+import emailjs from 'emailjs-com';
+import { useNavigate } from "react-router-dom";
+
+emailjs.init("lkTr1TsQzwhV0It3s");
 
 // Sample messages corresponding to categories
 const sampleMessages: Record<string, string> = {
@@ -16,6 +20,7 @@ const sampleMessages: Record<string, string> = {
 const FormPage: React.FC = () => {
   const [formData] = useState(new FormData());
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>) => {
     const { name, value } = event.target;
@@ -37,8 +42,32 @@ const FormPage: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (validateAllFields()) {
-      console.log("Form submitted:", formData);
+      const emailData = {
+        from_name: formData.name,
+        from_email: formData.email,
+        category: formData.category,
+        message: formData.message,
+        to_name: "Support Team" // or any recipient's name
+      };
       Object.assign(formData, new FormData()); 
+      navigate(`/thank-you`);
+
+      //TODO: enable this code to send email
+      // emailjs
+      // .send('service_iwtdtg6', 'template_r1xq6y5', emailData, 'lkTr1TsQzwhV0It3s')
+      // .then(
+      //   (response) => {
+      //     console.log('SUCCESS!', response.status, response.text);
+      //     navigate(`/thank-you`);
+      //   },
+      //   (error) => {
+      //     setErrors((prevErrors) => ({
+      //       ...prevErrors,
+      //       message: 'There was an error sending your message.', 
+      //     }));
+      //   }
+      // );
+
       setErrors({});
     } else {
       console.log("Form has errors:", errors);

@@ -10,6 +10,7 @@ import { Box } from "@mui/material";
 import { SearchPosts } from "./_components/_homepage/_body/SearchPosts";
 import PostDetail from "./_components/_homepage/_body/PostDetail";
 import ScrollToTop from "./ScrollToTop";
+import Thankyou from "./_components/_formpage/Thankyou";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/posts" element={<SearchPosts />} />
           <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/post/:postId" element={<PostDetail />} />
+          <Route path="/thank-you" element={<Thankyou />} />
         </Routes>
       </Box>
       <Footer />

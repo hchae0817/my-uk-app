@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Box, MenuItem, Select, Typography, TextField } from '@mui/material';
 import { categories } from '../data/categories';
 import { Category } from '../_homepage/_body/IBody';
+import { useNavigate } from "react-router-dom";
 
 // TODO: Add this to category JSON
 const sampleMessages: Record<string, string> = {
