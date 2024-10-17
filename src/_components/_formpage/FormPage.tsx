@@ -1,9 +1,19 @@
 import React, { useState } from "react";
-import { Container, TextField, Button, Typography, Box, Select, MenuItem, SelectChangeEvent } from "@mui/material";
+import {
+  Container,
+  TextField,
+  Button,
+  Typography,
+  Box,
+  Select,
+  MenuItem,
+  SelectChangeEvent,
+} from "@mui/material";
 import { categories } from "../data/categories";
 import { FormData } from "./FormData";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
+import { formService } from "../../_service/formService";
 
 emailjs.init("lkTr1TsQzwhV0It3s");
 
@@ -22,14 +32,16 @@ const FormPage: React.FC = () => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const navigate = useNavigate();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>
+  ) => {
     const { name, value } = event.target;
 
     // Update form data
     (formData as any)[name!] = value as string;
     setErrors((prevErrors) => ({
       ...prevErrors,
-      [name!]: "", 
+      [name!]: "",
     }));
   };
 
@@ -39,7 +51,22 @@ const FormPage: React.FC = () => {
     return Object.keys(validationErrors).length === 0;
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = (emailData: any) => {
+    emailjs.send("service_iwtdtg6", "template_r1xq6y5", emailData, "lkTr1TsQzwhV0It3s").then(
+      (response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        navigate(`/thank-you`);
+      },
+      (error) => {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          message: "There was an error sending your message.",
+        }));
+      }
+    );
+  };
+
+  const handleSubmit = async  (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (validateAllFields()) {
       const emailData = {
@@ -47,40 +74,46 @@ const FormPage: React.FC = () => {
         from_email: formData.email,
         category: formData.category,
         message: formData.message,
-        to_name: "Support Team" // or any recipient's name
+        to_name: "Support Team", // or any recipient's name
       };
-      Object.assign(formData, new FormData()); 
-      navigate(`/thank-you`);
+      Object.assign(formData, new FormData());
 
-      //TODO: enable this code to send email
-      // emailjs
-      // .send('service_iwtdtg6', 'template_r1xq6y5', emailData, 'lkTr1TsQzwhV0It3s')
-      // .then(
-      //   (response) => {
-      //     console.log('SUCCESS!', response.status, response.text);
-      //     navigate(`/thank-you`);
-      //   },
-      //   (error) => {
-      //     setErrors((prevErrors) => ({
-      //       ...prevErrors,
-      //       message: 'There was an error sending your message.', 
-      //     }));
+      setErrors({}); // Clear errors before submission
+      sendEmail(emailData)
+      navigate(`/thank-you`); // Navigate to thank you page
+
+      // try {
+      //   const response = await formService.submitEmail(emailData);
+      //   console.log("Response:", response, response.body); // Log response
+
+      //   // Check if the response is ok
+      //   if (!response.ok) {
+      //     throw new Error("Network response was not ok");
       //   }
-      // );
 
-      setErrors({});
-    } else {
-      console.log("Form has errors:", errors);
+      //   // Read the response body only once
+      //   const data = await response.json(); // Read response as JSON
+      //   console.log("Data:", data); // Log data
+
+      //   if (data.message === "Submission successful!") {
+      //     console.log(data, "send");
+      //     navigate(`/thank-you`); // Navigate to thank you page
+      //   } else {
+      //     console.error("Error:", "There was an error sending your message.");
+      //   }
+      // } catch (error) {
+      //   console.error("Error:", error);
+      // }
     }
   };
 
   const handleCategoryChange = (event: SelectChangeEvent<string>) => {
     const selectedCategory = event.target.value as string;
     formData.category = selectedCategory;
-    formData.message = sampleMessages[selectedCategory] || ""; 
+    formData.message = sampleMessages[selectedCategory] || "";
     setErrors((prevErrors) => ({
       ...prevErrors,
-      message: "", 
+      message: "",
     }));
   };
 
