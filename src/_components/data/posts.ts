@@ -4,6 +4,7 @@ export const posts: Post[] = [
   {
     id: 1,
     title: "Lion King",
+    subTitle: "What to expect for fantastic performances!",
     category: "musical",
     content: `
     Experience the magic of Disney's *The Lion King*, a breathtaking musical that transports you to the heart of Africa. 
@@ -17,11 +18,16 @@ export const posts: Post[] = [
     tags: ["music", "performance"],
     contentType: ContentType.template,
     location: "21 Wellington St, London WC2E 7RQ",
-    rating: 4.5
+    latitude: 51.5128,
+    longitude: -0.1195,
+    rating: 4.5,
+    openingHours: "7:30 PM - 10:00 PM",
+    bookingRequired: true,
   },
   {
     id: 2,
-    title: "London eye",
+    title: "London Eye",
+    subTitle: "Enjoy dramatic senary from the best place in London!",
     category: "landmarks",
     content: `
     The London Eye is not just a Ferris wheel; it is a breathtaking observation deck that offers a unique perspective 
@@ -35,11 +41,16 @@ export const posts: Post[] = [
     tags: ["history", "architecture"],
     contentType: ContentType.template,
     location: "Riverside Building, County Hall, London SE1 7PB",
+    latitude: 51.5033,
+    longitude: -0.1195,
     rating: 3.5,
+    openingHours: "10:00 AM - 8:30 PM",
+    bookingRequired: true,
   },
   {
     id: 3,
     title: "Da Mario",
+    subTitle: "Perfect for a night out with your partner or your family",
     category: "restaurant",
     content: `
     Nestled in the heart of the city, *Da Mario* is a culinary gem that brings authentic Italian flavors to your plate. 
@@ -52,11 +63,16 @@ export const posts: Post[] = [
     tags: ["food", "dining"],
     contentType: ContentType.html,
     location: "63 Endell St, London WC2H 9AJ",
+    latitude: 51.5145,
+    longitude: -0.1257,
     rating: 4.5,
+    openingHours: "12:00 PM - 11:00 PM",
+    bookingRequired: false,
   },
   {
     id: 4,
     title: "Local Alcoholic Beverage",
+    subTitle: "Enjoy drinking? This is a place",
     category: "alcohol",
     content: `
     Discover the rich flavors of our local alcoholic beverage, *Tennessee Whiskey*, a true American classic. 
@@ -70,11 +86,16 @@ export const posts: Post[] = [
     tags: ["beverage", "local"],
     contentType: ContentType.template,
     location: "London",
+    latitude: 51.5074,
+    longitude: -0.1278,
     rating: 3,
+    openingHours: "5:00 PM - 10:00 PM",
+    bookingRequired: true,
   },
   {
     id: 5,
     title: "Sky Garden",
+    subTitle: "Way tooo nice for a free day out",
     category: "view",
     content: `
     Experience breathtaking views of the city at the *Sky Garden*, London's highest public garden. 
@@ -87,6 +108,10 @@ export const posts: Post[] = [
     tags: ["scenery", "nature"],
     contentType: ContentType.template,
     location: "R1, Sky Garden Walk, London EC3M 8AF",
+    latitude: 51.5116,
+    longitude: -0.0839,
     rating: 5,
+    openingHours: "10:00 AM - 6:00 PM",
+    bookingRequired: false,
   },
 ];

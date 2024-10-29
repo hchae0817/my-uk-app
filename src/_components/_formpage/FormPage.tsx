@@ -54,7 +54,6 @@ const FormPage: React.FC = () => {
   const sendEmail = (emailData: any) => {
     emailjs.send("service_iwtdtg6", "template_r1xq6y5", emailData, "lkTr1TsQzwhV0It3s").then(
       (response) => {
-        console.log("SUCCESS!", response.status, response.text);
         navigate(`/thank-you`);
       },
       (error) => {

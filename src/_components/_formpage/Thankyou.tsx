@@ -29,7 +29,7 @@ const Thankyou: React.FC = () => {
         Your message has been successfully sent.
       </Typography>
       <Typography variant="body1" paragraph>
-        We appreciate your feedback and will get back to you shortly.
+        We appreciate your request and will get back to you shortly.
       </Typography>
       <Button
         variant="contained"

@@ -11,6 +11,8 @@ import { SearchPosts } from "./_components/_homepage/_body/SearchPosts";
 import PostDetail from "./_components/_homepage/_body/PostDetail";
 import ScrollToTop from "./ScrollToTop";
 import Thankyou from "./_components/_formpage/Thankyou";
+import 'leaflet/dist/leaflet.css';
+
 
 function App() {
   return (
